@@ -1,7 +1,7 @@
 # rust_load_test
-Rust load test 0.1.0
-Nick K. <ngkdev@gmail.com>
-Runs load tests
+Rust load test 0.1.0  
+Nick K. <ngkdev@gmail.com>  
+Runs a basic load test of repeated GET requests to a url.
 
 ## USAGE:
     basic-load-tester.exe [FLAGS] [OPTIONS] --url <url>
