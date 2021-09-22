@@ -1,9 +1,17 @@
-# Usage
+# rust_load_test
+Rust load test 0.1.0
+Nick K. <ngkdev@gmail.com>
+Runs load tests
 
-Usage: ./load_test [options]'
+## USAGE:
+    basic-load-tester.exe [FLAGS] [OPTIONS] --url <url>
 
-Flags
-- '-u', --url URL, **required**, the URL to load test
-- '-t', --times TIMES, the number of times to curl the url
-- '-s', --sleep SLEEP, the time in seconds (can be fractional) to sleep between requests
-- '-h', --help, prints this help message
+### FLAGS:
+    -h, --help       Prints help information
+    -V, --version    Prints version information
+    -v, --verbose    Run in verbose mode
+
+### OPTIONS:
+    -u, --url <url>          **Required** Url to test
+    -d, --delay <delay>      Delay between requests in millis
+    -n, --number <number>    Number of requests to make
