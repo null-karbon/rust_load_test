@@ -15,3 +15,9 @@ Runs a basic load test of repeated GET requests to a url.
     -u, --url <url>          **Required** Url to test
     -d, --delay <delay>      Delay between requests in millis
     -n, --number <number>    Number of requests to make
+
+TODO:
+- [ ] Add fargate cloudformation template
+    - [ ] Public cloud template
+    - [ ] VPC Template
+- [ ] Finish building out docker container. Maybe just cross-compile and download binary?
