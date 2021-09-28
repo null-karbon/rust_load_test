@@ -100,14 +100,14 @@ fn main() -> Result<(), Box<dyn Error>> {
     let mut i = 0;
 
     while i < number {
-        i += 1;
-        println!("Request #: {}", i);
+        println!("Request #: {}", i + 1);
         let res = reqwest::blocking::get(url)?;
         println!("Status: {}\n", res.status());
         //println!("Headers:\n{:?}", res.headers());
         // copy the response body directly to stdout
         //res.copy_to(&mut std::io::stdout())?;
         thread::sleep(delay_millis);
+        i += 1;
     }
 
     println!("\n\nTesting Complete.");

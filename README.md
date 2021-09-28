@@ -13,8 +13,8 @@ Runs a basic load test of repeated GET requests to a url.
 
 ### OPTIONS:
     -u, --url <url>          **Required** Url to test
-    -d, --delay <delay>      Delay between requests in millis
-    -n, --number <number>    Number of requests to make
+    -d, --delay <delay>      Delay between requests in millis. Limit 10000ms.
+    -n, --number <number>    Number of requests to make. Limit 10 million.
 
 TODO:
 - [ ] Add fargate cloudformation template
