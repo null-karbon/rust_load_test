@@ -1,7 +1,6 @@
-extern crate reqwest;
-extern crate clap;
-extern crate rand;
-
+use reqwest;
+use clap;
+use rand;
 use clap::{Arg, App};
 use std::{thread, time};
 use std::error::Error;
@@ -22,12 +21,12 @@ fn main() -> Result<(), Box<dyn Error>> {
         .arg(Arg::with_name("number")
             .short("n")
             .long("number")
-            .help("Number of requests to make")
+            .help("Number of requests to make. Limit of 10 million.")
             .takes_value(true))
         .arg(Arg::with_name("delay")
             .short("d")
             .long("delay")
-            .help("Delay between requests in millis")
+            .help("Delay between requests in millis. Limit of 10000ms")
             .takes_value(true))
         .arg(Arg::with_name("verbosity")
             .short("v")
@@ -67,8 +66,13 @@ fn main() -> Result<(), Box<dyn Error>> {
     let delay_arg: u64 = if arguments.is_present("delay") {
         match arguments.value_of("delay") {
             Some(x) if x.parse::<u64>().is_ok() => {
-                println!("Delay flag present and set.");
-                x.parse::<u64>()?
+                if x.parse::<u64>()? > 10000 {
+                    println!("Delay is greater than 10000ms. Defaulting to 250ms.");
+                    250
+                }else{
+                    println!("Delay flag present and set.");
+                    x.parse::<u64>()?
+                }
             },
             _ => {
                 println!("Error parsing delay value, defaulting to 250ms.");
@@ -90,7 +94,7 @@ fn main() -> Result<(), Box<dyn Error>> {
     if arguments.is_present("verbosity") {
         println!("Running in verbose mode");
         println!("Load testing {} {} times", url, number);
-        println!("Waiting {:?} between each call", delay_millis);
+        println!("Waiting {:?} between each call\n", delay_millis);
     }
 
     let mut i = 0;
